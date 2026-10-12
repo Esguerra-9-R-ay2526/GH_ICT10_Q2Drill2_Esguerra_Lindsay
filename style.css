@@ -1,0 +1,151 @@
+/* ---------- Palette (swap these values to use your own colors) ---------- */
+:root {
+  --ink: #3d3214;        /* deep navy: header band, headings, primary button */
+  --ink-soft: #2b4c7e;   /* bookcloth blue: hover, focus ring */
+  --brass: hsl(41, 65%, 48%);      /* accent: spine stripe, subtitle */
+  --paper: #f4f6fa;      /* page background */
+  --card: #ffffff;       /* form + result panels */
+  --line: hsl(41, 65%, 48%);       /* borders */
+  --text: #1e2533;       /* body text */
+  --muted: #000000;      /* secondary text */
+  --ok: #1f7a4d;         /* success state */
+  --bad: #b3372f;        /* error state */
+}
+
+*, *::before, *::after { box-sizing: border-box; }
+
+html { scroll-padding-top: 1rem; }
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  padding: 3.5rem 1.25rem 2rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  font-family: "Segoe UI", system-ui, -apple-system, Roboto, sans-serif;
+  font-size: 1rem;
+  line-height: 1.5;
+  color: var(--text);
+  /* navy band behind the header, paper below */
+  background: linear-gradient(var(--ink) 0 17rem, var(--paper) 17rem);
+}
+
+/* ---------- Header ---------- */
+h2 {
+  margin: 0;
+  width: 100%;
+  max-width: 26rem;
+  font-family: Georgia, "Times New Roman", serif;
+  font-size: clamp(1.9rem, 6vw, 2.5rem);
+  font-weight: 700;
+  letter-spacing: 0.02em;
+  line-height: 1.15;
+  color: #fff;
+}
+
+h2 + p {
+  margin: 0.5rem 0 2rem;
+  width: 100%;
+  max-width: 26rem;
+  font-size: 0.9rem;
+  letter-spacing: 0.08em;
+  color: var(--brass);
+}
+
+/* ---------- Form card ---------- */
+form {
+  width: 100%;
+  max-width: 26rem;
+  padding: 1.75rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.9rem;
+  background: var(--card);
+  border: 1px solid var(--line);
+  border-left: 6px solid var(--brass);   /* book-spine edge */
+  border-radius: 6px;
+  box-shadow: 0 12px 32px rgba(20, 33, 61, 0.18);
+}
+
+form br { display: none; }  /* spacing is handled by gap */
+
+input[type="text"] {
+  width: 100%;
+  padding: 0.8rem 0.9rem;
+  font: inherit;
+  color: var(--text);
+  background: var(--paper);
+  border: 1px solid var(--line);
+  border-radius: 4px;
+  transition: border-color 0.15s, box-shadow 0.15s, background 0.15s;
+}
+
+input[type="text"]::placeholder { color: var(--muted); }
+
+input[type="text"]:focus {
+  outline: none;
+  background: #fff;
+  border-color: var(--ink-soft);
+  box-shadow: 0 0 0 3px rgba(43, 76, 126, 0.25);
+}
+
+input[type="button"] {
+  margin-top: 0.4rem;
+  padding: 0.85rem 1rem;
+  font: inherit;
+  font-weight: 600;
+  letter-spacing: 0.03em;
+  color: #fff;
+  background: var(--ink);
+  border: 0;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background 0.15s, transform 0.1s;
+}
+
+input[type="button"]:hover { background: var(--ink-soft); }
+input[type="button"]:active { transform: translateY(1px); }
+
+input[type="button"]:focus-visible {
+  outline: 3px solid var(--brass);
+  outline-offset: 2px;
+}
+
+/* ---------- Result panel ---------- */
+#div1 {
+  width: 100%;
+  max-width: 26rem;
+  margin-top: 1.25rem;
+  padding: 1rem 1.25rem;
+  font-weight: 500;
+  color: var(--muted);
+  background: var(--card);
+  border: 1px solid var(--line);
+  border-left: 6px solid var(--line);
+  border-radius: 6px;
+}
+
+/* Optional: add these classes from Python for success / error results
+   e.g.  div = document.querySelector("#div1"); div.className = "ok"  */
+#div1.ok  { color: var(--ok);  border-left-color: var(--ok);  background: #f0f8f4; }
+#div1.bad { color: var(--bad); border-left-color: var(--bad); background: #fdf3f2; }
+
+/* ---------- Footer ---------- */
+footer {
+  margin-top: auto;
+  padding-top: 2.5rem;
+  font-size: 0.85rem;
+  color: var(--muted);
+  text-align: center;
+}
+
+/* ---------- Small screens ---------- */
+@media (max-width: 480px) {
+  body { padding-top: 2.5rem; }
+  form { padding: 1.25rem; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  * { transition: none !important; }
+}

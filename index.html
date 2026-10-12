@@ -1,0 +1,30 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- PyScript -->
+    <link rel="stylesheet" href="https://pyscript.net/releases/2026.7.3/core.css" />
+    <script type="module" src="https://pyscript.net/releases/2026.7.3/core.js"></script>
+    <!--Style css-->
+    <link rel="stylesheet" href="style.css">
+    <title>Book Club Checker</title>
+</head>
+<body>
+    <h2>BOOK CLUB CHECKER</h2>
+    <p>CANDIDATE VERIFICATION SYSTEM</p>
+
+    <form>
+        <input type="text" id="fname" placeholder="Enter your first name"><BR>
+        <input type="text" id="lname" placeholder="Enter your last name"><br>
+        <input type="button" py-click="get_name" value="Verify">
+    </form>
+
+    <div id="div1">Enter your name to check your membership.</div>
+
+    <footer>© 2026 BOOK Club • Quarter 2</footer>
+
+    <py-script src="main.py"></py-script>
+</body>
+</html>
